@@ -1,0 +1,293 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h2>Hello World</h2>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h2>{{ header }}</h2>
+    <p>{{ message }}</p>
+</body>
+</html> -->
+
+<!-- //51
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h2>{{ header }}</h2>
+    <p>Имя: {{ user.name }} Возраст: {{ user.age}}</p>
+    <p>Адресс: {{address.0}}, д. {{address.1}}, кв. {{address.2}}</p>
+    <p>Языки: {{langs.0}}, {{langs.1}}</p>
+</body>
+</html> -->
+
+<!-- //52
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h1>{{ <person class="name"></person> }}</h1>
+</body>
+</html> -->
+
+<!-- //54
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    {{ boby }}
+    {% autoescape off %}
+        {{ boby }}
+    {% endautoescape %}
+</body>
+</html>  -->
+
+<!-- //55
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    {% comment %}
+        <p>Вывод содержимого в шаблон Django</p>
+    {% endcomment %}
+
+    {{boby}}
+</body>
+</html>  -->
+
+<!-- //цикл if
+{% if условие %}
+    содержимое блока
+{% endif %}
+
+В шаблоне в зависимости от значения переменной n мы можем выводить определенный
+контент:
+{% if n > 0 %}
+    <p> число положительное</p>
+{% endif %}
+То есть если n больше 0, то будет выводиться, что число положительное. Если n меньше
+или равно 0, ничего не будет выводиться.
+
+{% if n > 0 %}
+    <p> число положительное</p>
+{% else %}
+    <p> число отрицательное или равно нулю</p>
+{% endif %}
+
+{% if n > 0 %}
+    <p> число положительное</p>
+{% elif n < 0 %}
+    <p> число отрицательное</p>
+{% else %}
+    <p> число равно нулю</p>
+{% endif %}
+
+{% if a > 0 and b > 0 %}
+    <p> {a} </p>
+{% else %}
+    <p> {b} </p>
+{% endif %}
+
+//цикл for
+{% for element in collection %}
+    <li> действия с element </li>
+{% endfor %} -->
+
+<!-- //57
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <ui> 
+        {% for lan in langs %}
+            <li> {{ lan }} </li>
+        {% endfor %}
+
+        <!-- {% for lan in langs %}
+        <li>{{ lan }}</li>
+        {% empty %}
+        <li>Langs array is empty</li>
+        {% endfor %} -->
+    <!-- </ui>
+</body>
+</html>  --> -->
+
+<!-- //перебор словарей
+{% for key, value in data.items %}
+    <p>{{ key }}: {{value}}</p>
+{% endfor %}
+
+//определение переменных
+{% with name = "Tom" age = 29%}
+<div>
+    <p>Name: {{ name }}</p>
+    <p>Age: {{ age }}</p>
+</div>
+{% endwith %} -->
+
+<!-- //даты 58
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <p>{% now "Y" %}</p>
+    <p>{% now "F j Y" %}</p>
+    <p>{% now "N, j, Y" %}</p>
+    <p>{% now "N j, Y, P" %}</p>
+</body>
+</html> -->
+
+<!-- //фильтр add
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <div> 
+        {% with message = "Hello" %}
+            <h2>{{message|add: "Django" }}</h2>
+        {% endwith %}
+    </div>
+</body>
+</html>
+Фильтр capfirst делает первую букву заглавной:
+{{ message|capfirst }}ccc
+
+//фильтр cut
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <div> 
+        {% with message = "Я был дома" %}
+            <h2>{{message|cut: "был" }}</h2>
+        {% endwith %}
+    </div>
+</body>
+</html>
+
+//фильтр default
+{% with isEnabled = False %}
+    {{isEnabled|cut: "unabled" }}
+{% endwith %}
+В данном случае переменная isEnabled равна False, поэтому шаблон выведет "unabled"
+
+//фильтр default_if_none 
+{% with user = None %}
+    {{user|default_if_none: "Undefined" }}
+{% endwith %}
+
+//округление до одного знака после запятой
+{{ value|floatformat }}
+
+//фильтр для обозначения до скольки знаков округлять
+{{ value|floatformat:3 }}
+
+//округление отрицательных чисел
+{{ value|floatformat:"-3" }}
+
+//округление до ближайшего целого
+{{ value|floatformat:"0" }} 
+
+//округление с аргументом g
+{{ value|floatformat:"2g" }}
+
+//округление для кода
+{% with value = 34232.34 %}
+    {{value|floatformat:"2g"  }}
+{% endwith %} -->
+
+<!-- //65
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h2>{{ my_date|date: "d.m.Y" }}</h2> // дата
+    <h2>{{ my_date|date: "H:i" }}</h2> //время
+    <h2>{{ my_date|date: "c" }}</h2> //дата и время
+    <h2>{{ my_date|date: "SHORT_DATE_FORMAT" }}</h2> //дата
+</body>
+</html> -->
+
+<!-- //66
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    {{ users|join: ", " }}
+</body>
+</html> -->
+<!-- {{ users|slice:"start:"}}
+{{ users|slice:":end"}}
+{{ users|slice:"start:end"}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    {{ users|join: "1:3 " }}
+</body>
+</html> -->
+
+<!-- //фильтр length (длина списка)
+{{ users|length}} -->
+
+<!-- //69
+<!DOCTYPE html>
+{% load test_project\hello\static %}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}" />
+    <title>Django</title>
+    
+</head>
+<body>
+    <h1>Лес</h1>
+    <img scr="{% static "images/forest.jpg" %}" alt="лес">
+</body>
+</html> -->
